@@ -24,8 +24,9 @@ server <- function(input,output){
     output$plot <- renderPlot({
       plot_dat <- dplyr::filter(dat, ideo5 %in% input$slider)
       
-      ggplot2::ggplot(dat = plot_dat, mapping = aes(x = pid7)) +
-        ggplot2::geom_col()
+      ggplot2::ggplot(dat = plot_dat, mapping = aes(x = pid7, y = ideo5)) +
+        ggplot2::geom_col() +
+        ggplot2::labs(x = "7 Point Party ID, 1=Very D, 7=Very R", y = "Count")
     })
 }
 

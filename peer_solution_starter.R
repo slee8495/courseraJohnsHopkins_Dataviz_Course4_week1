@@ -15,7 +15,7 @@ ui<- fluidPage(
       sliderInput(inputId = "slider", label = "Select Five Point Ideology (1 = Very Liberal, 5 = Very Conservative",
                   value = 1, min = 1, max = 5)
     ),
-    mainPanel(plotOutput("plot"))
+    plotOutput("plot")
   )
 )
   
@@ -25,7 +25,7 @@ server <- function(input,output){
       plot_dat <- dplyr::filter(dat, ideo5 %in% input$slider)
       
       ggplot2::ggplot(dat = plot_dat, mapping = aes(x = pid7)) +
-        ggplot2::geom_histogram()
+        ggplot2::geom_col()
     })
 }
 
